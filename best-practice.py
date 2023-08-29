@@ -207,21 +207,21 @@ def main():
     pa_ip, pa_username, pa_password = "192.168.8.45", "admin", "P@ssw0rd"
 
     print("""
-    ╔═══════════════════════════════════════════════════════════════════════════════════════
-    ║ WELCOME TO THE PALO-ALTO CONFIG PUSHER 3000!
-    ║ 
-    ║ Here's what we're gonna do:
-    ║ 1️⃣ Push an Antivirus Profile
-    ║ 2️⃣ Push an AntiSpyware Profile
-    ║ 3️⃣ Push a URL-Profile
-    ║ 4️⃣ Deploy a Vulnerability Profile
-    ║ 5️⃣ Set up a Zone Protection Profile
-    ║ 6️⃣ And, craft some Security Policy rules that fend off pesky malicious IPs!
-    ║
-    ║ \U0001F6AB WARNING: While this might sound fun, please don't run this in your
-    ║ production environment. This script is best suited for labs, or if you're
-    ║ gearing up a brand new palo alto firewall. Play safe! In short, use this at your
-    ║ own risk \U0001F6AB
+    
+    WELCOME TO THE PALO-ALTO CONFIG PUSHER
+    
+    Here's what we're gonna do:
+    1️⃣ Push an Antivirus Profile
+    2️⃣ Push an AntiSpyware Profile
+    3️⃣ Push a URL-Profile
+    4️⃣ Deploy a Vulnerability Profile
+    5️⃣ Set up a Zone Protection Profile
+    6️⃣ And, craft some Security Policy rules that fend off pesky malicious IPs!
+    
+    \U0001F6AB WARNING: While this might sound fun, please don't run this in your
+    production environment. This script is best suited for labs, or if you're
+    gearing up a brand new palo alto firewall. Play safe! In short, use this at your
+    own risk \U0001F6AB
     
     """)
 
@@ -324,7 +324,7 @@ def main():
     if push_security_rule == 'yes':
         print("\nDid you review the external dynamic lists for known bad IP? because I am adding it now.\n")
         response = push_external_dynamic_ip(pa_ip, pa_username, pa_password)
-        print("\nResponse from Palo Alto for anti-virus profile:\n", response)
+        print("\nResponse from Palo Alto for pushing external dynamic IP:\n", response)
         rule_name = input("\nEnter a name for the security rule (this will block traffic if the destination is going to BAD guys!): ")
         #location = input("\nEnter location for the rule: ")
         vsys = input("\nEnter vsys (default is vsys1): ") or "vsys1"
