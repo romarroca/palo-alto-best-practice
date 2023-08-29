@@ -1,5 +1,5 @@
-import requests
 import json
+import requests
 
 # Disable SSL warnings
 requests.packages.urllib3.disable_warnings(requests.packages.urllib3.exceptions.InsecureRequestWarning)
@@ -169,6 +169,21 @@ def push_url_profile_to_palo_alto(ip, username, password):
     response = requests.post(url, headers=headers, params=params, json=json_data, verify=False)
     return response.json()
 
+def push_av_profile_to_palo_alto(ip, username, password):
+    json_data = load_json_from_file('best-practice-av.json')
+    
+    api_key = get_api_key(ip, username, password)
+    url = f'https://{ip}/restapi/v10.2/Objects/AntivirusSecurityProfiles'
+    
+    headers = {
+        "Content-Type": "application/json",
+        "X-PAN-KEY": api_key
+    }
+    
+    params = {'name': 'Strict_AV', 'location': 'vsys', 'vsys': 'vsys1'}
+
+    response = requests.post(url, headers=headers, params=params, json=json_data, verify=False)
+    return response.json()
 
 
 def main():
@@ -224,7 +239,7 @@ def main():
     push_to_pa = input("\nDo you want to push this profile to Palo Alto? (yes/no): ").lower()
     if push_to_pa == 'yes':
         # Static IP, username, and password definition
-        pa_ip, pa_username, pa_password = "192.168.8.46", "admin", "P@ssw0rd"
+        pa_ip, pa_username, pa_password = "192.168.8.45", "admin", "P@ssw0rd"
         response = push_json_to_palo_alto(pa_ip, pa_username, pa_password, json_data)
         print("\nResponse from Palo Alto:\n", response)
     else:
@@ -240,7 +255,7 @@ def main():
 
     push_vuln_profile = input("\nDo you want to push the vulnerability profile to Palo Alto? (yes/no): ").lower()
     if push_vuln_profile == 'yes':
-        pa_ip, pa_username, pa_password = "192.168.8.46", "admin", "P@ssw0rd"
+        pa_ip, pa_username, pa_password = "192.168.8.45", "admin", "P@ssw0rd"
         response = push_vulnerability_profile_to_palo_alto(pa_ip, pa_username, pa_password)
         print("\nResponse from Palo Alto for Vulnerability Profile:\n", response)
     else:
@@ -256,11 +271,27 @@ def main():
 
     push_url_profile = input("\nDo you want to push the URL profile to Palo Alto? (yes/no): ").lower()
     if push_url_profile == 'yes':
-        pa_ip, pa_username, pa_password = "192.168.8.46", "admin", "P@ssw0rd"
+        pa_ip, pa_username, pa_password = "192.168.8.45", "admin", "P@ssw0rd"
         response = push_url_profile_to_palo_alto(pa_ip, pa_username, pa_password)
         print("\nResponse from Palo Alto for URL Profile:\n", response)
     else:
         print("Exiting without pushing URL profile to Palo Alto.")
+
+    print("""
+
+    ╔════════════════════════════════════════════════════════════════════╗
+    ║ Please review the content of best-practice-av.json                 ║
+    ╚════════════════════════════════════════════════════════════════════╝
+
+    """)
+
+    push_av_profile = input("\nDo you want to push the anti-virus profile to Palo Alto? (yes/no): ").lower()
+    if push_url_profile == 'yes':
+        pa_ip, pa_username, pa_password = "192.168.8.45", "admin", "P@ssw0rd"
+        response = push_av_profile_to_palo_alto(pa_ip, pa_username, pa_password)
+        print("\nResponse from Palo Alto for anti-virus profile:\n", response)
+    else:
+        print("Exiting without pushing anti-virus profile to Palo Alto.")
 
     print("""
 
@@ -278,7 +309,7 @@ def main():
         vsys = input("\nEnter vsys (default is vsys1): ") or "vsys1"
         rule_data1 = load_json_from_file('security_policy_rule1.json')  
         rule_data1['entry']['@name'] = rule_name
-        pa_ip, pa_username, pa_password = "192.168.8.46", "admin", "P@ssw0rd"
+        pa_ip, pa_username, pa_password = "192.168.8.45", "admin", "P@ssw0rd"
         response = push_security_policy_to_palo_alto(pa_ip, pa_username, pa_password, rule_data1)
         print("\nResponse from Palo Alto:\n", response)
     else:
@@ -291,7 +322,7 @@ def main():
         vsys = input("\nEnter vsys (default is vsys1): ") or "vsys1"
         rule_data2 = load_json_from_file('security_policy_rule2.json')  
         rule_data2['entry']['@name'] = rule_name
-        pa_ip, pa_username, pa_password = "192.168.8.46", "admin", "P@ssw0rd"
+        pa_ip, pa_username, pa_password = "192.168.8.45", "admin", "P@ssw0rd"
         response = push_security_policy_to_palo_alto(pa_ip, pa_username, pa_password, rule_data2)
         print("\nResponse from Palo Alto:\n", response)
     else:
