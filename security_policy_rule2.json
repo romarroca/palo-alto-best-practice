@@ -1,0 +1,26 @@
+{
+    "entry": {
+        "@name": "",
+        "from": {
+            "member": "any"
+        },
+        "to": {
+            "member": "any"
+        },
+        "source": {
+            "member": "any"
+        },
+        "destination": {
+            "member": ["AD", "HOST_1", "HOST_2"]
+        },
+        "service": {
+            "member": ["application-default"]
+        },
+        "application": {
+            "member": ["any"]
+        },
+        "action": "deny",
+        "log-start": "yes",
+        "rule-type": "universal"
+    }
+}

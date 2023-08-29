@@ -1,0 +1,73 @@
+{
+    "entry": {
+        "@name": "Custom_ZoneProtection_Profile",
+        "description": "Custom Zone Protection Profile created programmatically.",
+        "flood": {
+            "tcp-syn": {
+                "enable": "yes",
+                "red": {
+                    "alarm-rate": "666",
+                    "activate-rate": "733",
+                    "maximal-rate": "214400"
+                }
+            },
+            "udp": {
+                "enable": "yes",
+                "red": {
+                    "alarm-rate": "466",
+                    "activate-rate": "513",
+                    "maximal-rate": "150080"
+                }
+            },
+            "icmp": {
+                "enable": "yes",
+                "red": {
+                    "alarm-rate": "333",
+                    "activate-rate": "366",
+                    "maximal-rate": "107200"
+                }
+            }
+        },
+        "scan": {
+            "entry": [
+                {
+                    "@name": "8003",
+                    "action": {
+                        "block-ip": {
+                            "track-by": "source",
+                            "duration": "300"
+                        }
+                    },
+                    "interval": "2",
+                    "threshold": "100"
+                },
+                {
+                    "@name": "8002",
+                    "action": {
+                        "block-ip": {
+                            "track-by": "source",
+                            "duration": "300"
+                        }
+                    },
+                    "interval": "10",
+                    "threshold": "100"
+                },
+                {
+                    "@name": "8001",
+                    "action": {
+                        "block-ip": {
+                            "track-by": "source",
+                            "duration": "300"
+                        }
+                    },
+                    "interval": "2",
+                    "threshold": "100"
+                }
+            ]
+        },
+        "discard-ip-spoof": "no",
+        "discard-ip-frag": "yes",
+        "strict-ip-check": "no",
+        "discard-malformed-option": "yes"
+    }
+}
