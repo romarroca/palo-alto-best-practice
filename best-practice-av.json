@@ -1,0 +1,81 @@
+{   
+    "entry": {
+        "@name": "Strict_AV",
+        "@location": "vsys",
+        "@vsys": "vsys1",
+        "decoder": {
+            "entry": [
+                {
+                    "@name": "ftp",
+                    "action": "default",
+                    "wildfire-action": "default",
+                    "mlav-action": "default"
+                },
+                {
+                    "@name": "http",
+                    "action": "default",
+                    "wildfire-action": "default",
+                    "mlav-action": "default"
+                },
+                {
+                    "@name": "http2",
+                    "action": "default",
+                    "wildfire-action": "default",
+                    "mlav-action": "default"
+                },
+                {
+                    "@name": "imap",
+                    "action": "reset-both",
+                    "wildfire-action": "reset-both",
+                    "mlav-action": "reset-both"
+                },
+                {
+                    "@name": "pop3",
+                    "action": "reset-both",
+                    "wildfire-action": "reset-both",
+                    "mlav-action": "reset-both"
+                },
+                {
+                    "@name": "smb",
+                    "action": "default",
+                    "wildfire-action": "default",
+                    "mlav-action": "default"
+                },
+                {
+                    "@name": "smtp",
+                    "action": "reset-both",
+                    "wildfire-action": "reset-both",
+                    "mlav-action": "reset-both"
+                }
+            ]
+        },
+        "mlav-engine-filebased-enabled": {
+            "entry": [
+                {
+                    "@name": "Windows Executables",
+                    "mlav-policy-action": "disable"
+                },
+                {
+                    "@name": "PowerShell Script 1",
+                    "mlav-policy-action": "disable"
+                },
+                {
+                    "@name": "PowerShell Script 2",
+                    "mlav-policy-action": "disable"
+                },
+                {
+                    "@name": "Executable Linked Format",
+                    "mlav-policy-action": "disable"
+                },
+                {
+                    "@name": "MSOffice",
+                    "mlav-policy-action": "disable"
+                },
+                {
+                    "@name": "Shell",
+                    "mlav-policy-action": "disable"
+                }
+            ]
+        }
+    }
+}
