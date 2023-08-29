@@ -1,0 +1,17 @@
+{
+    "entry": [
+        {
+            "@name": "1lists.blocklist.de",
+            "@location": "vsys",
+            "@vsys": "vsys1",
+            "type": {
+                "ip": {
+                    "recurring": {
+                        "five-minute": {}
+                    },
+                    "url": "https://lists.blocklist.de/lists/all.txt"
+                }
+            }
+        }
+    ]
+}

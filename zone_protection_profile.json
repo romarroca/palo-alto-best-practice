@@ -6,24 +6,24 @@
             "tcp-syn": {
                 "enable": "yes",
                 "red": {
-                    "alarm-rate": "666",
-                    "activate-rate": "610",
+                    "alarm-rate": "6666",
+                    "activate-rate": "7333",
                     "maximal-rate": "214400"
                 }
             },
             "udp": {
                 "enable": "yes",
                 "red": {
-                    "alarm-rate": "466",
-                    "activate-rate": "427",
+                    "alarm-rate": "4666",
+                    "activate-rate": "5133",
                     "maximal-rate": "150080"
                 }
             },
             "icmp": {
                 "enable": "yes",
                 "red": {
-                    "alarm-rate": "333",
-                    "activate-rate": "305",
+                    "alarm-rate": "3333",
+                    "activate-rate": "3666",
                     "maximal-rate": "107200"
                 }
             }

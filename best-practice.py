@@ -184,7 +184,23 @@ def push_av_profile_to_palo_alto(ip, username, password):
 
     response = requests.post(url, headers=headers, params=params, json=json_data, verify=False)
     return response.json()
+###########################################################################
+def push_external_dynamic_ip(ip, username, password):
+    json_data = load_json_from_file('external_dynamic_ip.json')
+    
+    api_key = get_api_key(ip, username, password)
+    url = f'https://{ip}/restapi/v10.2/Objects/ExternalDynamicLists'
+    
+    headers = {
+        "Content-Type": "application/json",
+        "X-PAN-KEY": api_key
+    }
+    
+    params = {'name': '1lists.blocklist.de', 'location': 'vsys', 'vsys': 'vsys1'}
 
+    response = requests.post(url, headers=headers, params=params, json=json_data, verify=False)
+    return response.json()
+###########################################################################
 
 def main():
 
@@ -306,6 +322,9 @@ def main():
 
     push_security_rule = input("\nDo you want to push a security rule that blocks traffic to and from known bad IP to Palo Alto Firewall? (yes/no): ").lower()
     if push_security_rule == 'yes':
+        print("\nDid you review the external dynamic lists for known bad IP? because I am adding it now.\n")
+        response = push_external_dynamic_ip(pa_ip, pa_username, pa_password)
+        print("\nResponse from Palo Alto for anti-virus profile:\n", response)
         rule_name = input("\nEnter a name for the security rule (this will block traffic if the destination is going to BAD guys!): ")
         #location = input("\nEnter location for the rule: ")
         vsys = input("\nEnter vsys (default is vsys1): ") or "vsys1"
@@ -326,20 +345,6 @@ def main():
 
     else:
         print("Exiting without pushing security rule to Palo Alto.")
-
-    # push_security_rule = input("\nDo you want to push a security rule that blocks traffic from(source) known bad IP to Palo Alto Firewall? (yes/no): ").lower()
-    # if push_security_rule == 'yes':
-    #     rule_name = input("\nEnter a name for the security rule: ")
-    #     #location = input("\nEnter location for the rule: ")
-    #     vsys = input("\nEnter vsys (default is vsys1): ") or "vsys1"
-    #     rule_data2 = load_json_from_file('security_policy_rule2.json')  
-    #     rule_data2['entry']['@name'] = rule_name
-    #     #pa_ip, pa_username, pa_password = "192.168.8.45", "admin", "P@ssw0rd"
-    #     response = push_security_policy_to_palo_alto(pa_ip, pa_username, pa_password, rule_data2)
-    #     print("\nResponse from Palo Alto:\n", response)
-    # else:
-    #     print("Exiting without pushing security rule to Palo Alto.")
-
 
     print("""
 

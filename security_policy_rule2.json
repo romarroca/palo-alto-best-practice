@@ -11,7 +11,7 @@
             "member": "any"
         },
         "destination": {
-            "member": ["AD", "HOST_1", "HOST_2"]
+            "member": ["AD", "HOST_1", "HOST_2", "1lists.blocklist.de"]
         },
         "service": {
             "member": ["application-default"]
