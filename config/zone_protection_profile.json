@@ -7,7 +7,7 @@
                 "enable": "yes",
                 "red": {
                     "alarm-rate": "2666",
-                    "activate-rate": "2444",
+                    "activate-rate": "3666",
                     "maximal-rate": "214400"
                 }
             },
@@ -15,7 +15,7 @@
                 "enable": "yes",
                 "red": {
                     "alarm-rate": "1866",
-                    "activate-rate": "1711",
+                    "activate-rate": "2566",
                     "maximal-rate": "150080"
                 }
             },
@@ -23,7 +23,7 @@
                 "enable": "yes",
                 "red": {
                     "alarm-rate": "1333",
-                    "activate-rate": "1222",
+                    "activate-rate": "1833",
                     "maximal-rate": "107200"
                 }
             }

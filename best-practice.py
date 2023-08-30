@@ -138,7 +138,7 @@ def push_security_policy_to_palo_alto(ip, username, password, json_data):
     return response.json()
 
 def push_vulnerability_profile_to_palo_alto(ip, username, password):
-    json_data = load_json_from_file('vulnerability_profile.json')
+    json_data = load_json_from_file('config/vulnerability_profile.json')
     
     api_key = get_api_key(ip, username, password)
     url = f'https://{ip}/restapi/v10.2/Objects/VulnerabilityProtectionSecurityProfiles'
@@ -154,7 +154,7 @@ def push_vulnerability_profile_to_palo_alto(ip, username, password):
     return response.json()
 
 def push_url_profile_to_palo_alto(ip, username, password):
-    json_data = load_json_from_file('best-practice-url.json')
+    json_data = load_json_from_file('config/best-practice-url.json')
     
     api_key = get_api_key(ip, username, password)
     url = f'https://{ip}/restapi/v10.2/Objects/URLFilteringSecurityProfiles'
@@ -170,7 +170,7 @@ def push_url_profile_to_palo_alto(ip, username, password):
     return response.json()
 
 def push_av_profile_to_palo_alto(ip, username, password):
-    json_data = load_json_from_file('best-practice-av.json')
+    json_data = load_json_from_file('config/best-practice-av.json')
     
     api_key = get_api_key(ip, username, password)
     url = f'https://{ip}/restapi/v10.2/Objects/AntivirusSecurityProfiles'
@@ -186,7 +186,7 @@ def push_av_profile_to_palo_alto(ip, username, password):
     return response.json()
 ###########################################################################
 def push_external_dynamic_ip(ip, username, password):
-    json_data = load_json_from_file('external_dynamic_ip.json')
+    json_data = load_json_from_file('config/external_dynamic_ip.json')
     
     api_key = get_api_key(ip, username, password)
     url = f'https://{ip}/restapi/v10.2/Objects/ExternalDynamicLists'
@@ -250,7 +250,7 @@ def main():
 
     save_to_file = input("\nDo you want to save this profile to a JSON file? (yes/no): ").lower()
     if save_to_file == 'yes':
-        with open('zone_protection_profile.json', 'w') as json_file:
+        with open('config/zone_protection_profile.json', 'w') as json_file:
             json.dump(json_data, json_file, indent=4)
         print("JSON profile saved to 'zone_protection_profile.json'.")
 
@@ -315,7 +315,6 @@ def main():
 
     ╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
     ║ Please review the content of security_policy_rule1.json and security_policy_rule2.json                      ║
-    ║ Just drag the policy to the top in case you existing rules. Still working on how to push it to the top.     ║
     ╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 
     """)
@@ -328,7 +327,7 @@ def main():
         rule_name = input("\nEnter a name for the security rule (this will block traffic if the destination is going to BAD guys!): ")
         #location = input("\nEnter location for the rule: ")
         vsys = input("\nEnter vsys (default is vsys1): ") or "vsys1"
-        rule_data1 = load_json_from_file('security_policy_rule1.json')  
+        rule_data1 = load_json_from_file('config/security_policy_rule1.json')  
         rule_data1['entry']['@name'] = rule_name
         #pa_ip, pa_username, pa_password = "192.168.8.45", "admin", "P@ssw0rd"
         response = push_security_policy_to_palo_alto(pa_ip, pa_username, pa_password, rule_data1)
@@ -337,7 +336,7 @@ def main():
         rule_name = input("\nEnter a name for the security rule (this will block traffic if the source came from BAD guys!): ")
         #location = input("\nEnter location for the rule: ")
         vsys = input("\nEnter vsys (default is vsys1): ") or "vsys1"
-        rule_data2 = load_json_from_file('security_policy_rule2.json')  
+        rule_data2 = load_json_from_file('config/security_policy_rule2.json')  
         rule_data2['entry']['@name'] = rule_name
         #pa_ip, pa_username, pa_password = "192.168.8.45", "admin", "P@ssw0rd"
         response = push_security_policy_to_palo_alto(pa_ip, pa_username, pa_password, rule_data2)
@@ -348,9 +347,14 @@ def main():
 
     print("""
 
-    ╔════════════════════════════════════════════════════╗
-    ║ You have reached the end of the script! thank you! ║
-    ╚════════════════════════════════════════════════════╝
+    Make sure to check everything manually before committing!
+
+    Also, if you have and existing rule, the one we added here might be at the bottom and 
+    make sure to drag it all the way up since we want blocking to bad source/destinations to be
+    process first.
+
+    Thank you!
+    
 
     """)
 
