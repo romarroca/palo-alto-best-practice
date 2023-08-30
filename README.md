@@ -14,6 +14,10 @@ and do not use it on a production environment.
 - I do not have this on my dynamic list yet, maybe because of I am running this on VM. but I added this on external dynamic list
 ![image](https://github.com/romarroca/palo-alto-config/assets/87074019/972a11f9-38d6-4ea2-9926-bc6c9415c913)
 
+## The script will add the following external Dynamic-lists
+- https://lists.blocklist.de/lists/all.txt
+- https://rules.emergingthreats.net/fwrules/emerging-Block-IPs.txt
+
 ## change this to your environment
 ![image](https://github.com/romarroca/palo-alto-config/assets/87074019/6e48c684-89dd-4348-8a33-f428e3a117df)
  
@@ -27,8 +31,8 @@ Just a quick heads-up if you're thinking of using this script:
 Use wisely! 
 
 ## TO DO
-- fix external dynamic list for predefined ip from palo alto
-- Support for Panorama
+- Add external dynamic domain lists
+- Test on Panorama
 - 
 
 Tested Palo-Alto versions
