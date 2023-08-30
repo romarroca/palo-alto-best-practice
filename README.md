@@ -14,7 +14,7 @@ and do not use it on a production environment.
 - I do not have this on my dynamic list yet, maybe because of I am running this on VM. but I added this on external dynamic list
 ![image](https://github.com/romarroca/palo-alto-config/assets/87074019/972a11f9-38d6-4ea2-9926-bc6c9415c913)
 
-## The script will add the following external Dynamic-lists
+## The script will add the following External Dynamic IP lists and block traffic to/from it.
 - https://lists.blocklist.de/lists/all.txt
 - https://rules.emergingthreats.net/fwrules/emerging-Block-IPs.txt
 
