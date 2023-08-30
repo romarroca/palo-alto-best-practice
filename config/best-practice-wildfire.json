@@ -1,0 +1,24 @@
+{
+  "entry": [
+    {
+      "@name": "best-practice-wildfire",
+      "@location": "vsys",
+      "@vsys": "vsys1",
+      "rules": {
+        "entry": [
+          {
+            "@name": "Send all",
+            "application": {
+              "member": ["any"]
+            },
+            "file-type": {
+              "member": ["any"]
+            },
+            "direction": "both",
+            "analysis": "public-cloud"
+          }
+        ]
+      }
+    }
+  ]
+}
