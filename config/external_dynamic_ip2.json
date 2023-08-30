@@ -1,15 +1,13 @@
 {
     "entry": [
         {
-            "@name": "1lists.blocklist.de",
-            "@location": "vsys",
-            "@vsys": "vsys1",
+            "@name": "Emerging_Threats",
             "type": {
                 "ip": {
                     "recurring": {
                         "five-minute": {}
                     },
-                    "url": "https://lists.blocklist.de/lists/all.txt"
+                    "url": "https://rules.emergingthreats.net/fwrules/emerging-Block-IPs.txt"
                 }
             }
         }

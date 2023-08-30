@@ -8,10 +8,10 @@
             "member": "any"
         },
         "source": {
-            "member": "any"
+            "member": ["lists.blocklist.de"]
         },
         "destination": {
-            "member": ["Bulletproof IP addresses", "High risk IP addresses", "Known malicious IP addresses", "lists.blocklist.de"]
+            "member": "any" 
         },
         "service": {
             "member": ["application-default"]

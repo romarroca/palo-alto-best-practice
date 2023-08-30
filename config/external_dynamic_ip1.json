@@ -1,0 +1,15 @@
+{
+    "entry": [
+        {
+            "@name": "lists.blocklist.de",
+            "type": {
+                "ip": {
+                    "recurring": {
+                        "five-minute": {}
+                    },
+                    "url": "https://lists.blocklist.de/lists/all.txt"
+                }
+            }
+        }
+    ]
+}

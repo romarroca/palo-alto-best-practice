@@ -11,7 +11,7 @@
             "member": "any"
         },
         "destination": {
-            "member": ["Bulletproof IP addresses", "High risk IP addresses", "Known malicious IP addresses", "lists.blocklist.de"]
+            "member": ["lists.blocklist.de"]
         },
         "service": {
             "member": ["application-default"]
