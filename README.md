@@ -17,5 +17,5 @@ and do not use it on a production environment.
 - 
 
 Tested Palo-Alto versions
-- 
+- PAN OS 11.0.0 KVM
 
