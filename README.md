@@ -26,8 +26,6 @@ Just a quick heads-up if you're thinking of using this script:
 Use wisely! 
 
 ## TO DO
-- add file policy profile
-- add wildfire profile
 - fix external dynamic list for predefined ip from palo alto
 - Support for Panorama
 - 
