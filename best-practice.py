@@ -238,10 +238,14 @@ def main():
     6 And, craft some Security Policy rules that fend off pesky malicious IPs!
     7 *To be added
     
-    \U0001F6AB WARNING: While this might sound fun, please don't run this in your
-    production environment. This script is best suited for labs, or if you're
-    gearing up a brand new palo alto firewall. Play safe! In short, use this at your
-    own risk \U0001F6AB
+    \U0001F6AB Just a quick heads-up if you're thinking of using this script
+
+    - You Do You: Basically, you're running this on your own dime. If anything goes sideways, it's on you. Just so we're clear.
+    - Not Magic, Just a Tool: This script is like a cool sidekick, not the superhero. If you know your stuff about configurations, 
+      it's here to make your life a bit easier. But don't expect it to do all the heavy lifting or make decisions for you.
+    - Know What's Up: Please, oh please, get what this script is all about before hitting "Run." It'll save both of us a headache.
+
+    Use wisely and happy coding! \U0001F6AB
     
     """)
 
