@@ -1,0 +1,180 @@
+{
+    "entry": [
+        {
+            "@name": "best-practice-spyware",
+            "rules": {
+                "entry": [
+                    {
+                        "@name": "simple-critical",
+                        "action": {
+                            "reset-both": {}
+                        },
+                        "severity": {
+                            "member": [
+                                "critical"
+                            ]
+                        },
+                        "threat-name": "any",
+                        "category": "any",
+                        "packet-capture": "single-packet"
+                    },
+                    {
+                        "@name": "simple-high",
+                        "action": {
+                            "reset-both": {}
+                        },
+                        "severity": {
+                            "member": [
+                                "high"
+                            ]
+                        },
+                        "threat-name": "any",
+                        "category": "any",
+                        "packet-capture": "single-packet"
+                    },
+                    {
+                        "@name": "simple-medium",
+                        "action": {
+                            "reset-both": {}
+                        },
+                        "severity": {
+                            "member": [
+                                "medium"
+                            ]
+                        },
+                        "threat-name": "any",
+                        "category": "any",
+                        "packet-capture": "single-packet"
+                    },
+                    {
+                        "@name": "simple-informational",
+                        "action": {
+                            "default": {}
+                        },
+                        "severity": {
+                            "member": [
+                                "informational"
+                            ]
+                        },
+                        "threat-name": "any",
+                        "category": "any",
+                        "packet-capture": "disable"
+                    },
+                    {
+                        "@name": "simple-low",
+                        "action": {
+                            "default": {}
+                        },
+                        "severity": {
+                            "member": [
+                                "low"
+                            ]
+                        },
+                        "threat-name": "any",
+                        "category": "any",
+                        "packet-capture": "disable"
+                    }
+                ]
+            },
+            "botnet-domains": {
+                "lists": {
+                    "entry": [
+                        {
+                            "@name": "default-paloalto-dns",
+                            "action": {
+                                "sinkhole": {}
+                            },
+                            "packet-capture": "disable"
+                        }
+                    ]
+                },
+                "dns-security-categories": {
+                    "entry": [
+                        {
+                            "@name": "pan-dns-sec-adtracking",
+                            "log-level": "default",
+                            "action": "sinkhole",
+                            "packet-capture": "single-packet"
+                        },
+                        {
+                            "@name": "pan-dns-sec-cc",
+                            "log-level": "default",
+                            "action": "sinkhole",
+                            "packet-capture": "extended-capture"
+                        },
+                        {
+                            "@name": "pan-dns-sec-ddns",
+                            "log-level": "default",
+                            "action": "sinkhole",
+                            "packet-capture": "single-packet"
+                        },
+                        {
+                            "@name": "pan-dns-sec-grayware",
+                            "log-level": "default",
+                            "action": "sinkhole",
+                            "packet-capture": "single-packet"
+                        },
+                        {
+                            "@name": "pan-dns-sec-malware",
+                            "log-level": "default",
+                            "action": "sinkhole",
+                            "packet-capture": "single-packet"
+                        },
+                        {
+                            "@name": "pan-dns-sec-parked",
+                            "log-level": "default",
+                            "action": "sinkhole",
+                            "packet-capture": "disable"
+                        },
+                        {
+                            "@name": "pan-dns-sec-phishing",
+                            "log-level": "default",
+                            "action": "sinkhole",
+                            "packet-capture": "disable"
+                        },
+                        {
+                            "@name": "pan-dns-sec-proxy",
+                            "log-level": "default",
+                            "action": "sinkhole",
+                            "packet-capture": "single-packet"
+                        },
+                        {
+                            "@name": "pan-dns-sec-recent",
+                            "log-level": "default",
+                            "action": "sinkhole",
+                            "packet-capture": "disable"
+                        }
+                    ]
+                },
+                "sinkhole": {
+                    "ipv4-address": "pan-sinkhole-default-ip",
+                    "ipv6-address": "::1"
+                }
+            },
+            "mica-engine-spyware-enabled": {
+                "entry": [
+                    {
+                        "@name": "HTTP Command and Control detector",
+                        "inline-policy-action": "reset-both"
+                    },
+                    {
+                        "@name": "HTTP2 Command and Control detector",
+                        "inline-policy-action": "reset-both"
+                    },
+                    {
+                        "@name": "SSL Command and Control detector",
+                        "inline-policy-action": "reset-both"
+                    },
+                    {
+                        "@name": "Unknown-TCP Command and Control detector",
+                        "inline-policy-action": "reset-both"
+                    },
+                    {
+                        "@name": "Unknown-UDP Command and Control detector",
+                        "inline-policy-action": "reset-both"
+                    }
+                ]
+            }
+        }
+    ]
+}

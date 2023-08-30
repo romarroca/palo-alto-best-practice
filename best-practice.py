@@ -184,7 +184,26 @@ def push_av_profile_to_palo_alto(ip, username, password):
 
     response = requests.post(url, headers=headers, params=params, json=json_data, verify=False)
     return response.json()
-###########################################################################
+
+##############################################################################################
+def push_spyware_profile_to_palo_alto(ip, username, password):
+    json_data = load_json_from_file('config/best-practice-spyware.json')
+    
+    api_key = get_api_key(ip, username, password)
+    url = f'https://{ip}/restapi/v10.2/Objects/AntiSpywareSecurityProfiles'
+    
+    headers = {
+        "Content-Type": "application/json",
+        "X-PAN-KEY": api_key
+    }
+    
+    params = {'name': 'best-practice-spyware', 'location': 'vsys', 'vsys': 'vsys1'}
+
+    response = requests.post(url, headers=headers, params=params, json=json_data, verify=False)
+    return response.json()
+
+##############################################################################################    
+
 def push_external_dynamic_ip(ip, username, password):
     json_data = load_json_from_file('config/external_dynamic_ip.json')
     
@@ -200,7 +219,7 @@ def push_external_dynamic_ip(ip, username, password):
 
     response = requests.post(url, headers=headers, params=params, json=json_data, verify=False)
     return response.json()
-###########################################################################
+
 
 def main():
 
@@ -311,6 +330,25 @@ def main():
         print("\nResponse from Palo Alto for anti-virus profile:\n", response)
     else:
         print("Exiting without pushing anti-virus profile to Palo Alto.")
+
+#############################################################################################################
+    print("""
+
+    ╔════════════════════════════════════════════════════════════════════╗
+    ║ Please review the content of best-practice-spyware.json            ║
+    ╚════════════════════════════════════════════════════════════════════╝
+
+    """)
+
+    push_av_profile = input("\nDo you want to push the anti-spyware profile to Palo Alto? (yes/no): ").lower()
+    if push_url_profile == 'yes':
+        #pa_ip, pa_username, pa_password = "192.168.8.45", "admin", "P@ssw0rd"
+        response = push_spyware_profile_to_palo_alto(pa_ip, pa_username, pa_password)
+        print("\nResponse from Palo Alto for anti-spyware profile:\n", response)
+    else:
+        print("Exiting without pushing anti-spyware profile to Palo Alto.")
+
+#############################################################################################################
 
     print("""
 
