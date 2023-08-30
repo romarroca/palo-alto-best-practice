@@ -245,7 +245,7 @@ def main():
       it's here to make your life a bit easier. But don't expect it to do all the heavy lifting or make decisions for you.
     - Know What's Up: Please, oh please, get what this script is all about before hitting "Run." It'll save both of us a headache.
 
-    Use wisely and happy coding! \U0001F6AB
+    Use wisely! \U0001F6AB
     
     """)
 
