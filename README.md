@@ -2,7 +2,7 @@
 - This script will push some configuration base on the JSON including in this repository. Please review everything first
 and do not use it on a production environment.
 
-- trying to find if its possible to use this as the source and destination on block IP's as I am not seeing it on my address lists. maybe license issue?
+- I do not have this on my dynamic list yet, maybe because of I am running this on VM. but I added this on external dynamic list
 ![image](https://github.com/romarroca/palo-alto-config/assets/87074019/972a11f9-38d6-4ea2-9926-bc6c9415c913)
 
 - some place holders
