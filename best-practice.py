@@ -211,12 +211,13 @@ def main():
     WELCOME TO THE PALO-ALTO CONFIG PUSHER
     
     Here's what we're gonna do:
-    1️⃣ Push an Antivirus Profile
-    2️⃣ Push an AntiSpyware Profile
-    3️⃣ Push a URL-Profile
-    4️⃣ Deploy a Vulnerability Profile
-    5️⃣ Set up a Zone Protection Profile
-    6️⃣ And, craft some Security Policy rules that fend off pesky malicious IPs!
+    1 Push an Antivirus Profile
+    2 Push an AntiSpyware Profile
+    3 Push a URL-Profile
+    4 Deploy a Vulnerability Profile
+    5 Set up a Zone Protection Profile
+    6 And, craft some Security Policy rules that fend off pesky malicious IPs!
+    7 *To be added
     
     \U0001F6AB WARNING: While this might sound fun, please don't run this in your
     production environment. This script is best suited for labs, or if you're
