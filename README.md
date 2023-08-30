@@ -19,9 +19,9 @@ and do not use it on a production environment.
 ## Disclaimer
 Just a quick heads-up if you're thinking of using this script:
 
- -You Do You: Basically, you're running this on your own dime. If anything goes sideways, it's on you. Just so we're clear.
- -Not Magic, Just a Tool: This script is like a cool sidekick, not the superhero. If you know your stuff about configurations, it's here to make your life a bit easier. But don't expect it to do all the heavy lifting or make decisions for you.
- -Know What's Up: Please, oh please, get what this script is all about before hitting "Run." It'll save both of us a headache.
+- You Do You: Basically, you're running this on your own dime. If anything goes sideways, it's on you. Just so we're clear.
+- Not Magic, Just a Tool: This script is like a cool sidekick, not the superhero. If you know your stuff about configurations, it's here to make your life a bit easier. But don't expect it to do all the heavy lifting or make decisions for you.
+- Know What's Up: Please, oh please, get what this script is all about before hitting "Run." It'll save both of us a headache.
 
 Use wisely and happy coding! 
 
