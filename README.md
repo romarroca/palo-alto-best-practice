@@ -35,7 +35,7 @@ Use wisely!
 ## TO DO
 - Add external dynamic domain lists
 - Test on Panorama
-- 
+- !
 
 Tested Palo-Alto versions
 - PAN OS 11.0.0 KVM
