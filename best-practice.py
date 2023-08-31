@@ -245,7 +245,7 @@ def push_external_dynamic_ip2(ip, username, password, location, vsys):
 
 def main():
 
-    pa_ip, pa_username, pa_password = "192.168.8.45", "admin", "P@ssw0rd"
+    pa_ip, pa_username, pa_password = "192.168.8.114", "admin", "P@ssw0rd"
 
     print("""
     
