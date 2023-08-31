@@ -39,4 +39,5 @@ Use wisely!
 
 Tested Palo-Alto versions
 - PAN OS 11.0.0 KVM
+- Currently supports rest-api restapi v10.2
 
