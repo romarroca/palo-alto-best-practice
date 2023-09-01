@@ -87,7 +87,7 @@ def create_json_profile(AR, ActR, MR, Concurrent_Session_Limit, ET, AR_UDP, ActR
         }
     }
 
-def create_security_policy_rule_from_file(filename, name, location, vsys):
+def create_security_policy_rule_from_file(filename, name, location, vsys, restapi_version):
     data = load_json_from_file(filename)
     data['entry']['@name'] = name
     return data
@@ -102,9 +102,9 @@ def get_api_key(ip, username, password):
     response = requests.get(url, verify=False)
     return response.text.split('<key>')[1].split('</key>')[0]
 
-def push_json_to_palo_alto(ip, username, password, json_data):
+def push_json_to_palo_alto(ip, username, password, json_data, restapi_version):
     api_key = get_api_key(ip, username, password)
-    url = f'https://{ip}/restapi/v10.2/Network/ZoneProtectionNetworkProfiles'
+    url = f'https://{ip}/restapi/{restapi_version}/Network/ZoneProtectionNetworkProfiles'
     
     headers = {
         "Content-Type": "application/json",
@@ -116,9 +116,9 @@ def push_json_to_palo_alto(ip, username, password, json_data):
     response = requests.post(url, headers=headers, params=params, json=json_data, verify=False)
     return response.json()
 
-def push_security_policy_to_palo_alto(ip, username, password, json_data, location, vsys):
+def push_security_policy_to_palo_alto(ip, username, password, json_data, location, vsys, restapi_version):
     api_key = get_api_key(ip, username, password)
-    url = f'https://{ip}/restapi/v10.2/Policies/SecurityRules'
+    url = f'https://{ip}/restapi/{restapi_version}/Policies/SecurityRules'
     
     headers = {
         "Content-Type": "application/json",
@@ -130,11 +130,11 @@ def push_security_policy_to_palo_alto(ip, username, password, json_data, locatio
     response = requests.post(url, headers=headers, params=params, json=json_data, verify=False)
     return response.json()
 
-def push_vulnerability_profile_to_palo_alto(ip, username, password, location, vsys):
+def push_vulnerability_profile_to_palo_alto(ip, username, password, location, vsys, restapi_version):
     json_data = load_json_from_file('config/vulnerability_profile.json')
     
     api_key = get_api_key(ip, username, password)
-    url = f'https://{ip}/restapi/v10.2/Objects/VulnerabilityProtectionSecurityProfiles'
+    url = f'https://{ip}/restapi/{restapi_version}/Objects/VulnerabilityProtectionSecurityProfiles'
     
     headers = {
         "Content-Type": "application/json",
@@ -146,11 +146,11 @@ def push_vulnerability_profile_to_palo_alto(ip, username, password, location, vs
     response = requests.post(url, headers=headers, params=params, json=json_data, verify=False)
     return response.json()
 
-def push_url_profile_to_palo_alto(ip, username, password, location, vsys):
+def push_url_profile_to_palo_alto(ip, username, password, location, vsys, restapi_version):
     json_data = load_json_from_file('config/best-practice-url.json')
     
     api_key = get_api_key(ip, username, password)
-    url = f'https://{ip}/restapi/v10.2/Objects/URLFilteringSecurityProfiles'
+    url = f'https://{ip}/restapi/{restapi_version}/Objects/URLFilteringSecurityProfiles'
     
     headers = {
         "Content-Type": "application/json",
@@ -162,11 +162,11 @@ def push_url_profile_to_palo_alto(ip, username, password, location, vsys):
     response = requests.post(url, headers=headers, params=params, json=json_data, verify=False)
     return response.json()
 
-def push_av_profile_to_palo_alto(ip, username, password, location, vsys):
+def push_av_profile_to_palo_alto(ip, username, password, location, vsys, restapi_version):
     json_data = load_json_from_file('config/best-practice-av.json')
     
     api_key = get_api_key(ip, username, password)
-    url = f'https://{ip}/restapi/v10.2/Objects/AntivirusSecurityProfiles'
+    url = f'https://{ip}/restapi/{restapi_version}/Objects/AntivirusSecurityProfiles'
     
     headers = {
         "Content-Type": "application/json",
@@ -178,11 +178,11 @@ def push_av_profile_to_palo_alto(ip, username, password, location, vsys):
     response = requests.post(url, headers=headers, params=params, json=json_data, verify=False)
     return response.json()
 
-def push_spyware_profile_to_palo_alto(ip, username, password, location, vsys):
+def push_spyware_profile_to_palo_alto(ip, username, password, location, vsys, restapi_version):
     json_data = load_json_from_file('config/best-practice-spyware.json')
     
     api_key = get_api_key(ip, username, password)
-    url = f'https://{ip}/restapi/v10.2/Objects/AntiSpywareSecurityProfiles'
+    url = f'https://{ip}/restapi/{restapi_version}/Objects/AntiSpywareSecurityProfiles'
     
     headers = {
         "Content-Type": "application/json",
@@ -194,11 +194,11 @@ def push_spyware_profile_to_palo_alto(ip, username, password, location, vsys):
     response = requests.post(url, headers=headers, params=params, json=json_data, verify=False)
     return response.json()
 
-def push_wildfire_profile_to_palo_alto(ip, username, password, location, vsys):
+def push_wildfire_profile_to_palo_alto(ip, username, password, location, vsys, restapi_version):
     json_data = load_json_from_file('config/best-practice-wildfire.json')
     
     api_key = get_api_key(ip, username, password)
-    url = f'https://{ip}/restapi/v10.2/Objects/WildFireAnalysisSecurityProfiles'
+    url = f'https://{ip}/restapi/{restapi_version}/Objects/WildFireAnalysisSecurityProfiles'
     
     headers = {
         "Content-Type": "application/json",
@@ -210,11 +210,11 @@ def push_wildfire_profile_to_palo_alto(ip, username, password, location, vsys):
     response = requests.post(url, headers=headers, params=params, json=json_data, verify=False)
     return response.json()
 
-def push_external_dynamic_ip1(ip, username, password, location, vsys):
+def push_external_dynamic_ip1(ip, username, password, location, vsys, restapi_version):
     json_data = load_json_from_file('config/external_dynamic_ip1.json')
     
     api_key = get_api_key(ip, username, password)
-    url = f'https://{ip}/restapi/v10.2/Objects/ExternalDynamicLists'
+    url = f'https://{ip}/restapi/{restapi_version}/Objects/ExternalDynamicLists'
     
     headers = {
         "Content-Type": "application/json",
@@ -226,11 +226,11 @@ def push_external_dynamic_ip1(ip, username, password, location, vsys):
     response = requests.post(url, headers=headers, params=params, json=json_data, verify=False)
     return response.json()
 
-def push_external_dynamic_ip2(ip, username, password, location, vsys):
+def push_external_dynamic_ip2(ip, username, password, location, vsys, restapi_version):
     json_data = load_json_from_file('config/external_dynamic_ip2.json')
     
     api_key = get_api_key(ip, username, password)
-    url = f'https://{ip}/restapi/v10.2/Objects/ExternalDynamicLists'
+    url = f'https://{ip}/restapi/{restapi_version}/Objects/ExternalDynamicLists'
     
     headers = {
         "Content-Type": "application/json",
@@ -245,7 +245,7 @@ def push_external_dynamic_ip2(ip, username, password, location, vsys):
 
 def main():
 
-    pa_ip, pa_username, pa_password = "192.168.8.114", "admin", "P@ssw0rd"
+    pa_ip, pa_username, pa_password = "192.168.8.200", "admin", "P@ssw0rd"
 
     print("""
     
@@ -289,6 +289,9 @@ def main():
     if not vsys_input:
         vsys_input = 'vsys1'
 
+    restapi_version_input = input("Enter restapi version (default is 'v10.2'): ")
+    if not restapi_version_input:
+        restapi_version_input = 'v10.2'
    
     print("""
     Please provide the following details as we will need it to craft our zone protection profile.
@@ -311,11 +314,13 @@ def main():
 
     push_to_pa = input("\nDo you want to push this profile to Palo Alto? (yes/no): ").lower()
     if push_to_pa == 'yes':
-        response = push_json_to_palo_alto(pa_ip, pa_username, pa_password, json_data)
+        response = push_json_to_palo_alto(pa_ip, pa_username, pa_password, json_data, restapi_version=restapi_version_input)
         print("\nResponse from Palo Alto:\n", response)
     else:
         print("Exiting without pushing to Palo Alto.")
 
+    
+    
     print("""
    
     ╔════════════════════════════════════════════════════════════════════╗
@@ -326,7 +331,7 @@ def main():
 
     push_vuln_profile = input("\nDo you want to push the vulnerability profile to Palo Alto? (yes/no): ").lower()
     if push_vuln_profile == 'yes':
-        response = push_vulnerability_profile_to_palo_alto(pa_ip, pa_username, pa_password, location=location_input, vsys=vsys_input)
+        response = push_vulnerability_profile_to_palo_alto(pa_ip, pa_username, pa_password, location=location_input, vsys=vsys_input, restapi_version=restapi_version_input)
         print("\nResponse from Palo Alto for Vulnerability Profile:\n", response)
     else:
         print("Exiting without pushing vulnerability profile to Palo Alto.")
@@ -341,7 +346,7 @@ def main():
 
     push_url_profile = input("\nDo you want to push the URL profile to Palo Alto? (yes/no): ").lower()
     if push_url_profile == 'yes':
-        response = push_url_profile_to_palo_alto(pa_ip, pa_username, pa_password, location=location_input, vsys=vsys_input)
+        response = push_url_profile_to_palo_alto(pa_ip, pa_username, pa_password, location=location_input, vsys=vsys_input, restapi_version=restapi_version_input)
         print("\nResponse from Palo Alto for URL Profile:\n", response)
     else:
         print("Exiting without pushing URL profile to Palo Alto.")
@@ -356,7 +361,7 @@ def main():
 
     push_av_profile = input("\nDo you want to push the anti-virus profile to Palo Alto? (yes/no): ").lower()
     if push_url_profile == 'yes':
-        response = push_av_profile_to_palo_alto(pa_ip, pa_username, pa_password, location=location_input, vsys=vsys_input)
+        response = push_av_profile_to_palo_alto(pa_ip, pa_username, pa_password, location=location_input, vsys=vsys_input, restapi_version=restapi_version_input)
         print("\nResponse from Palo Alto for anti-virus profile:\n", response)
     else:
         print("Exiting without pushing anti-virus profile to Palo Alto.")
@@ -371,7 +376,7 @@ def main():
 
     push_av_profile = input("\nDo you want to push the anti-spyware profile to Palo Alto? (yes/no): ").lower()
     if push_url_profile == 'yes':
-        response = push_spyware_profile_to_palo_alto(pa_ip, pa_username, pa_password, location=location_input, vsys=vsys_input)
+        response = push_spyware_profile_to_palo_alto(pa_ip, pa_username, pa_password, location=location_input, vsys=vsys_input, restapi_version=restapi_version_input)
         print("\nResponse from Palo Alto for anti-spyware profile:\n", response)
     else:
         print("Exiting without pushing anti-spyware profile to Palo Alto.")
@@ -387,7 +392,7 @@ def main():
 
     push_av_profile = input("\nDo you want to push the wildfire profile to Palo Alto? (yes/no): ").lower()
     if push_url_profile == 'yes':
-        response = push_wildfire_profile_to_palo_alto(pa_ip, pa_username, pa_password, location=location_input, vsys=vsys_input)
+        response = push_wildfire_profile_to_palo_alto(pa_ip, pa_username, pa_password, location=location_input, vsys=vsys_input, restapi_version=restapi_version_input)
         print("\nResponse from Palo Alto for wildfire profile:\n", response)
     else:
         print("Exiting without pushing wildfire profile to Palo Alto.")
@@ -405,19 +410,19 @@ def main():
     push_security_rule = input("\nDo you want to push a security rule that blocks traffic to and from known bad IP to Palo Alto Firewall? (yes/no): ").lower()
     if push_security_rule == 'yes':
         print("\nDid you review the external dynamic lists for known bad IP? because I am adding it now.\n")
-        response = push_external_dynamic_ip1(pa_ip, pa_username, pa_password, location=location_input, vsys=vsys_input)
-        response = push_external_dynamic_ip2(pa_ip, pa_username, pa_password, location=location_input, vsys=vsys_input)
+        response = push_external_dynamic_ip1(pa_ip, pa_username, pa_password, location=location_input, vsys=vsys_input, restapi_version=restapi_version_input)
+        response = push_external_dynamic_ip2(pa_ip, pa_username, pa_password, location=location_input, vsys=vsys_input, restapi_version=restapi_version_input)
         print("\nResponse from Palo Alto for pushing external dynamic IP:\n", response)
         rule_name = input("\nEnter a name for the security rule (this will block traffic if the destination is going to BAD guys!): ")
         rule_data1 = load_json_from_file('config/security_policy_rule1.json')  
         rule_data1['entry']['@name'] = rule_name
-        response = push_security_policy_to_palo_alto(pa_ip, pa_username, pa_password, rule_data1, location=location_input, vsys=vsys_input)
+        response = push_security_policy_to_palo_alto(pa_ip, pa_username, pa_password, rule_data1, location=location_input, vsys=vsys_input, restapi_version=restapi_version_input)
         print("\nResponse from Palo Alto:\n", response)
 
         rule_name = input("\nEnter a name for the security rule (this will block traffic if the source came from BAD guys!): ")
         rule_data2 = load_json_from_file('config/security_policy_rule2.json')  
         rule_data2['entry']['@name'] = rule_name
-        response = push_security_policy_to_palo_alto(pa_ip, pa_username, pa_password, rule_data2, location=location_input, vsys=vsys_input)
+        response = push_security_policy_to_palo_alto(pa_ip, pa_username, pa_password, rule_data2, location=location_input, vsys=vsys_input, restapi_version=restapi_version_input)
         print("\nResponse from Palo Alto:\n", response)
 
     else:
