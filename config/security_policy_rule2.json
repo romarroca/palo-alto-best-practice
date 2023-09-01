@@ -8,7 +8,7 @@
             "member": "any"
         },
         "source": {
-            "member": ["lists.blocklist.de"]
+            "member": ["lists.blocklist.de", "Emerging_Threats"]
         },
         "destination": {
             "member": "any" 
