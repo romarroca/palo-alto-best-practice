@@ -11,7 +11,7 @@
             "member": "any"
         },
         "destination": {
-            "member": ["lists.blocklist.de"]
+            "member": ["lists.blocklist.de", "Emerging_Threats"]
         },
         "service": {
             "member": ["application-default"]
